@@ -37,7 +37,7 @@ const signupUser = async (req,res) => {
         
     } catch (error) {
         res.status(500).json({message:error.message})
-        console.log("Error in signupUser : ",Error.message);
+        console.log("Error in signupUser : ",error.message);
         
     }
 }
@@ -67,4 +67,15 @@ const loginUser = async (req,res) => {
     }
 }
 
-export {signupUser,loginUser}
+const logoutUser = (req,res) => {
+    try {
+        res.cookie("jwt","",{maxAge:1});
+        res.status(200).json({message:"User logged out successfully"})
+        
+    } catch (error) {
+        res.status(500).json({message: error.message})
+        console.log("Error in the LoginUser : ",error.message);
+    }
+}
+
+export {signupUser,loginUser,logoutUser}
