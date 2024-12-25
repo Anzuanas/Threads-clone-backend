@@ -26,5 +26,5 @@ app.use(cookieParser())
 
 app.use("/api/users",userRoutes)
 app.use("/api/posts",postRoutes)
-app.use("/api/message",messageRoutes)
+app.use("/api/messages",messageRoutes)
 app.listen (port, () => console.log(`server is running on port ${port}`))
