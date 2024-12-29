@@ -72,6 +72,13 @@ async function getConversation(req,res) {
             path:"participants",
             select:"username profilePic"
         })
+
+        conversations.forEach(conversation => {
+            conversation.participants = conversation.participants.filter(
+                participant => participant._id.toString() !== userId.toString()
+            )
+        })
+
         res.status(200).json(conversations);
     } catch (error) {
         res.status(500).json({error: error.message})
