@@ -190,7 +190,7 @@ const updateUser = async (req, res) => {
           "replies.$[reply].userProfilePic":user.profilePic
         }
       },
-      {arrayFilters:[{"reply.userId":userId}]}
+      {arrayFilters:[{"reply.userId":user.profilePic}]}
     )
 
     //password should be null in response
