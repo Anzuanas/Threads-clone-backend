@@ -6,7 +6,7 @@ import userRoutes from "./routes/userRoutes.js"
 import postRoutes from "./routes/postRoutes.js"
 import messageRoutes from "./routes/messageRoutes.js"
 import {v2 as cloudinary} from "cloudinary"
-
+import { app,server } from "./socket/socket.js"
 dotenv.config()
 connectDB()
 cloudinary.config({
@@ -15,7 +15,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-const app = express();
+
 const port = process.env.PORT || 5000;
 
 app.use(express.json({ limit: "50mb" }))
@@ -27,4 +27,4 @@ app.use("/api/users",userRoutes)
 app.use("/api/posts",postRoutes)
 app.use("/api/messages",messageRoutes)
 
-app.listen (port, () => console.log(`server is running on port ${port}`))
+server.listen (port, () => console.log(`server is running on port ${port}`))
