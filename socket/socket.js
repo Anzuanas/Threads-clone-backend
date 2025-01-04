@@ -12,6 +12,10 @@ const io = new Server(server,{
     }
 })
 
+export const getRecipientSocketId = (recipeintId) => {
+    return userSocketMap[recipeintId]
+}
+
 const userSocketMap = {}
 
 io.on('connection',(socket) => {
